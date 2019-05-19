@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class ObstacleControl : MonoBehaviour
 {
     [SerializeField] float moveSpeed = -5f;
@@ -19,7 +19,7 @@ public class ObstacleControl : MonoBehaviour
     {
       if(collision.gameObject.name.Equals("trex"))
         {
-            Debug.Log("Tocou no Dino!");
+            SceneManager.LoadScene("MenuFinal");
         }
     }
 }
