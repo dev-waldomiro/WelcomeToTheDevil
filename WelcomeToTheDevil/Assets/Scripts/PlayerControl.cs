@@ -8,7 +8,7 @@ public class PlayerControl : MonoBehaviour
     public LayerMask isGround;
     public Transform groundCheck;
 
-    bool jumpToGo;
+    public bool jumpToGo;
 
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
@@ -25,13 +25,13 @@ public class PlayerControl : MonoBehaviour
 
         jumpToGo = Physics2D.OverlapCircle(groundCheck.position, checkRadius, isGround);
 
-        if (Input.GetKeyDown("up") && jumpToGo == true){
+        if (Input.GetKeyDown(KeyCode.UpArrow) && jumpToGo == true){
             rb.velocity = Vector2.up * jumpVelocity;
             jumpToGo = false;
         }
         if (rb.velocity.y < 0) {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        } else if (rb.velocity.y > 0 && !Input.GetKeyDown("up")) {
+        } else if (rb.velocity.y > 0 && !Input.GetKeyDown(KeyCode.UpArrow)) {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
     }
